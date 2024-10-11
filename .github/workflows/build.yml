@@ -268,7 +268,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build
-          key: ${{ matrix.os }}-${{ matrix.EVENT_MATRIX }}-v4
+          key: ${{ matrix.os }}-${{ matrix.EVENT_MATRIX }}-${{ hashFiles('CMakeLists.txt', 'cmake/**', '.github/**') }}-v4
 
       - name: Prepare vcpkg
         # Newer versions expect a vcpkg manifest, so stick to v7, that could handle vcpkgArguments
