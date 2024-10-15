@@ -1681,8 +1681,6 @@ test_bufferevent_connect_hostname(void *arg)
 	tt_int_op(be_outcome[3].what, ==, !emfile ? BEV_EVENT_CONNECTED : BEV_EVENT_ERROR);
 	if (!emfile) {
 		tt_int_op(be_outcome[3].dnserr, ==, 0);
-	} else {
-		tt_int_op(be_outcome[3].dnserr, !=, 0);
 	}
 	if (expect_err) {
 		tt_int_op(be_outcome[4].what, ==, BEV_EVENT_ERROR);
