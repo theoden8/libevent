@@ -173,9 +173,6 @@ respond_to_number(struct bufferevent *bev, void *ctx)
 	char *line;
 	int n;
 
-	enum regress_openssl_type type;
-	type = (enum regress_openssl_type)ctx;
-
 	line = evbuffer_readln(b, NULL, EVBUFFER_EOL_LF);
 	if (! line)
 		return;
@@ -190,6 +187,8 @@ respond_to_number(struct bufferevent *bev, void *ctx)
 		return;
 	}
 #ifdef SSL_renegotiate
+	enum regress_openssl_type type;
+	type = (enum regress_openssl_type)ctx;
 	if ((type & REGRESS_OPENSSL_CLIENT) && n == renegotiate_at) {
 		SSL_renegotiate(bufferevent_ssl_get_ssl(bev));
 	}
