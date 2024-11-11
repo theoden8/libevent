@@ -1103,8 +1103,9 @@ jobs:
           adb wait-for-device
           cp -rL . /tmp/libevent_flat
           tar -chf - -C /tmp libevent_flat | adb shell tar -xf - -C /data/local/tmp
-          adb shell find /data/local/tmp//libevent_flat/build/bin
           adb shell chmod +x /data/local/tmp/libevent_flat/build/bin/regress
+          adb file /data/local/tmp/libevent_flat/build/bin/regress
+          adb ls -la /data/local/tmp//libevent_flat/build/bin/regress
           adb shell /data/local/tmp/libevent_flat/build/bin/regress
           adb emu kill
           adb kill-server
