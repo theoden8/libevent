@@ -1097,6 +1097,7 @@ jobs:
       - name: AVD Tests
         if: matrix.EVENT_MATRIX == 'x86_64-linux-android'
         run: |
+          set -ex
           adb start-server
           emulator -avd test -no-window -gpu off -noaudio -no-boot-anim -no-metrics -camera-back none -memory 512 &
           adb wait-for-device
